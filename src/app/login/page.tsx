@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
@@ -8,32 +7,19 @@ import { useAuth } from "@/lib/auth-context";
 export default function LoginPage() {
   const { user, loading, signInWithGoogle } = useAuth();
   const router = useRouter();
-
-  useEffect(() => {
-    if (!loading && user) router.push("/dashboard");
-  }, [user, loading, router]);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-upcar-darker flex items-center justify-center">
-        <div className="w-8 h-8 border-2 border-upcar-red border-t-transparent rounded-full animate-spin" />
-      </div>
-    );
-  }
-
+  useEffect(() => { if (!loading && user) router.push("/dashboard"); }, [user, loading, router]);
+  if (loading) return <div className="min-h-screen bg-upcar-darker flex items-center justify-center"><div className="w-8 h-8 border-2 border-upcar-red border-t-transparent rounded-full animate-spin" /></div>;
   return (
     <div className="min-h-screen bg-upcar-darker flex flex-col items-center justify-center px-6 relative overflow-hidden">
-      <div className="absolute inset-0" style={{background: "radial-gradient(ellipse 60% 60% at 50% 50%, rgba(204,0,0,0.06) 0%, transparent 70%)"}} />
+      <div className="absolute inset-0" style={{background:"radial-gradient(ellipse 60% 60% at 50% 50%, rgba(204,0,0,0.06) 0%, transparent 70%)"}} />
       <div className="relative z-10 w-full max-w-md">
         <div className="flex justify-center mb-12">
           <Image src="/logo.png" alt="UpCar" width={180} height={60} className="h-14 w-auto" />
         </div>
-        <div className="rounded-2xl p-10 text-center" style={{background: "#111111", border: "1px solid rgba(255,255,255,0.07)"}}>
+        <div className="rounded-2xl p-10 text-center" style={{background:"#111111",border:"1px solid rgba(255,255,255,0.07)"}}>
           <h1 className="font-display text-4xl tracking-wider mb-3">BEM-VINDO</h1>
-          <p className="text-sm mb-10" style={{color: "rgba(255,255,255,0.45)"}}>
-            Entre para acessar o ecossistema completo do seu veículo.
-          </p>
-          <button onClick={signInWithGoogle} className="w-full flex items-center justify-center gap-3 py-4 rounded-xl font-semibold text-sm transition-all hover:scale-105" style={{background: "white", color: "#1a1a1a", boxShadow: "0 4px 20px rgba(0,0,0,0.3)"}}>
+          <p className="text-sm mb-10" style={{color:"rgba(255,255,255,0.45)"}}>Entre para acessar o ecossistema completo do seu veiculo.</p>
+          <button onClick={signInWithGoogle} className="w-full flex items-center justify-center gap-3 py-4 rounded-xl font-semibold text-sm transition-all hover:scale-105" style={{background:"white",color:"#1a1a1a",boxShadow:"0 4px 20px rgba(0,0,0,0.3)"}}>
             <svg width="20" height="20" viewBox="0 0 24 24">
               <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
               <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
@@ -42,12 +28,10 @@ export default function LoginPage() {
             </svg>
             Continuar com Google
           </button>
-          <p className="text-xs mt-6" style={{color: "rgba(255,255,255,0.25)"}}>
-            Ao entrar, você concorda com nossos Termos de Uso.
-          </p>
+          <p className="text-xs mt-6" style={{color:"rgba(255,255,255,0.25)"}}>Ao entrar, voce concorda com nossos Termos de Uso.</p>
         </div>
         <div className="text-center mt-6">
-          <a href="/" className="text-sm" style={{color: "rgba(255,255,255,0.35)"}}>? Voltar ao site</a>
+          <a href="/" className="text-sm" style={{color:"rgba(255,255,255,0.35)"}}>voltarAoSite</a>
         </div>
       </div>
     </div>
